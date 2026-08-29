@@ -1,0 +1,10 @@
+# Default owner for everything
+* @maxkaustav
+
+# Backend code
+/src/ @maxkaustav
+
+# GitHub Actions
+/.github/workflows/ @maxkaustav
+
+##### Enable code owners review fro settings repo settings > ruleset > branch ruleset
