@@ -1,0 +1,47 @@
+name: Hygiene
+
+on:
+  push:
+    branches:
+      - "*"
+    paths:
+      - "**"
+
+  pull_request:
+    branches:
+      - "*"
+    paths:
+      - "**"
+
+jobs:
+  ruff:
+    name: Ruff Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Ruff
+        run: pip install ruff
+
+      - name: Check formatting
+        run: ruff format --check .
+
+      - name: Run linting
+        run: ruff check .
+
+  betterleaks:
+    name: Betterleaks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Betterleaks
+        uses: betterleaks/betterleaks-action@v1
